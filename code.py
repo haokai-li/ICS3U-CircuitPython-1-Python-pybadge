@@ -9,11 +9,14 @@ import stage
 
 
 def game_scene():
-    
-    print("\n\n\n")
-    print("Hello, World!")
-    
-    
+    # add backgrond
+    image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bmp")
+    background = stage.Grid(image_bank_background, 10, 8)
+    # put background in game
+    game = stage.Stage(ugame.display, 60)
+    game.layers = [background]
+    game.render_block()
+    # loop
     while True:
         pass
 
