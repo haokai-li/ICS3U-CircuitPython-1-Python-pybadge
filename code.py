@@ -8,7 +8,7 @@ import ugame
 import stage
 
 
-def hello_workd():
+def game_scene():
     
     print("\n\n\n")
     print("Hello, World!")
@@ -18,4 +18,4 @@ def hello_workd():
         pass
 
 if __name__ == "__main__":
-    hello_workd()
+    game_scene()
