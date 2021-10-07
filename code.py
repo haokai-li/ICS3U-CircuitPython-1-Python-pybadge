@@ -17,7 +17,7 @@ def game_scene():
     background = stage.Grid(image_bank_background, 10, 8)
 
     # sprite frame
-    ship = stage.Grid(image_bank_sprite, 5, 75, 66)
+    ship = stage.Sprite(image_bank_sprite, 5, 75, 66)
 
 
     # put background in game
@@ -32,8 +32,9 @@ def game_scene():
         # update game logic
 
         # redraw Sprite
-        game.render_sprite([ship])
+        game.render_sprites([ship])
         game.tick() # wait
 
 if __name__ == "__main__":
     game_scene()
+
