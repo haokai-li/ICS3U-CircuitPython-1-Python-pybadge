@@ -9,7 +9,7 @@ import stage
 
 
 def game_scene():
-    # add backgrond
+    # add background
     image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bmp")
     image_bank_sprite = stage.Bank.from_bmp16("space_aliens.bmp")
 
