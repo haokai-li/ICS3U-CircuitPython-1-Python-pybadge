@@ -7,6 +7,8 @@
 import ugame
 import stage
 
+import constants
+
 
 def game_scene():
     # add background
@@ -14,15 +16,18 @@ def game_scene():
     image_bank_sprite = stage.Bank.from_bmp16("space_aliens.bmp")
 
     # size
-    background = stage.Grid(image_bank_background, 10, 8)
+    background = stage.Grid(image_bank_background, constants.SCREEN_GRID_X, constants.SCREEN_GRID_Y)
 
     # sprite frame
-    ship = stage.Sprite(image_bank_sprite, 5, 75, 66)
+    ship = stage.Sprite(image_bank_sprite, 5, 75, constants.SCREEN_Y - (2 * constants.SPRITE_SIZE))
 
 
     # put background in game
-    game = stage.Stage(ugame.display, 60)
+    # set the frame rate
+    game = stage.Stage(ugame.display, constants.FPS)
+    # set the layers
     game.layers = [ship] + [background]
+    # render the background
     game.render_block()
 
     # loop
@@ -30,22 +35,30 @@ def game_scene():
         # get input
         keys = ugame.buttons.get_pressed()
 
-        if keys & ugame.K_X:
-            print("A")
-        if keys & ugame.K_O:
-            print("B")
-        if keys & ugame.K_START:
-            print("Start")
-        if keys & ugame.K_SELECT:
-            print("Select")
-        if keys & ugame.K_RIGHT:
-            ship.move(ship.x + 1, ship.y)
-        if keys & ugame.K_LEFT:
-            ship.move(ship.x - 1, ship.y)
-        if keys & ugame.K_UP:
-            ship.move(ship.x, ship.y - 1)
-        if keys & ugame.K_DOWN:
-            ship.move(ship.x, ship.y + 1)
+        # A button to fire
+        if keys & ugame.K_X != 0:
+            pass
+        if keys & ugame.K_O != 0:
+            pass
+        if keys & ugame.K_START != 0:
+            pass
+        if keys & ugame.K_SELECT != 0:
+            pass
+        if keys & ugame.K_RIGHT != 0:
+            if ship.x < (constants.SCREEN_X - constants.SPRITE_SIZE):
+                ship.move(ship.x + constants.SPRITE_MOVEMENT_SPEED, ship.y)
+            else:
+                ship.move(constants.SCREEN_X - constants.SPRITE_SIZE, ship.y)
+        if keys & ugame.K_LEFT != 0:
+            if ship.x > 0:
+                ship.move(ship.x - constants.SPRITE_MOVEMENT_SPEED, ship.y)
+            else:
+                ship.move(0, ship.y)
+        if keys & ugame.K_UP != 0:
+            pass
+        if keys & ugame.K_DOWN != 0:
+            pass
+
         # update game logic
 
         # redraw Sprite
