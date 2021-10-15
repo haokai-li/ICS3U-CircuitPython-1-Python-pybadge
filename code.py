@@ -48,7 +48,7 @@ def game_scene():
     # set the frame rate
     game = stage.Stage(ugame.display, constants.FPS)
     # set the layers
-    game.layers = [ship] + [background] + [alien]
+    game.layers = [ship] + [alien] + [background]
     # render the background
     game.render_block()
 
@@ -94,7 +94,7 @@ def game_scene():
             pass
 
         # update game logic
-        if a_button == constants.button_state["button_still_pressed"]:
+        if a_button == constants.button_state["button_just_pressed"]:
             sound.play(pew_sound)
 
         # redraw Sprite
