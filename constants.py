@@ -2,7 +2,7 @@
 
 # Created by: Haokai Li
 # Created on: Oct 2021
-# This Program is comstants about pybadge
+# This Program is constants about pybadge
 
 # pybadge screen size is 160 x 128 and sprites size is 16 x 16
 SCREEN_X = 160
@@ -21,3 +21,9 @@ button_state = {
     "button_still_pressed": "still pressed",
     "button_released": "released",
 }
+
+# new pallet for red filled text
+RED_PALETTE = (
+    b"\xff\xff\x00\x22\xcey\x22\xff\xff\xff\xff\xff\xff\xff\xff\xff"
+    b"\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff"
+)

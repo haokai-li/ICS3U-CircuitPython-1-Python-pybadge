@@ -10,7 +10,56 @@ import stage
 import constants
 
 
+def menu_scene():
+    # This function is the main menu scene
+
+    # add background
+    image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bmp")
+
+    # add text
+    text = []
+    text1 = stage.Text(
+        width=29, height=12, font=None, palette=constants.RED_PALETTE, buffer=None
+    )
+    text1.move(20, 10)
+    text1.text("MT Game Studios")
+    text.append(text1)
+
+    text2 = stage.Text(
+        width=29, height=12, font=None, palette=constants.RED_PALETTE, buffer=None
+    )
+    text2.move(40, 110)
+    text2.text("PRESS START")
+    text.append(text2)
+
+    # size
+    background = stage.Grid(
+        image_bank_background, constants.SCREEN_GRID_X, constants.SCREEN_GRID_Y
+    )
+
+    # put background in game
+    # set the frame rate
+    game = stage.Stage(ugame.display, constants.FPS)
+    # set the layers
+    game.layers = text + [background]
+    # render the background
+    game.render_block()
+
+    # loop
+    while True:
+        # get input
+        keys = ugame.buttons.get_pressed()
+
+        if keys & ugame.K_START != 0:
+            game_scene()
+
+        # redraw Sprites
+        game.tick()  # wait
+
+
 def game_scene():
+    # This function is the main game scene
+
     # add background
     image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bmp")
     image_bank_sprite = stage.Bank.from_bmp16("space_aliens.bmp")
@@ -103,4 +152,4 @@ def game_scene():
 
 
 if __name__ == "__main__":
-    game_scene()
+    menu_scene()
