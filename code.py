@@ -220,4 +220,4 @@ def game_scene():
 
 
 if __name__ == "__main__":
-    menu_scene()
+    splash_scene()
