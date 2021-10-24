@@ -140,6 +140,12 @@ def game_scene():
     # score
     score = 0
 
+    score_text = stage.Text(width=29, height=14)
+    score_text.clear()
+    score_text.cursor(0, 0)
+    score_text.move(1, 1)
+    score_text.text("Score: {0}".format(score))
+
     # add background
     image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bmp")
     image_bank_sprite = stage.Bank.from_bmp16("space_aliens.bmp")
@@ -204,7 +210,7 @@ def game_scene():
     # set the frame rate
     game = stage.Stage(ugame.display, constants.FPS)
     # set the layers
-    game.layers = lasers + [ship] + aliens + [background]
+    game.layers = [score_text] + lasers + [ship] + aliens + [background]
     # render the background
     game.render_block()
 
@@ -282,6 +288,13 @@ def game_scene():
                         constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y
                     )
                     show_alien()
+                    score -= 1
+                    if score < 0:
+                        score = 0
+                    score_text.clear()
+                    score_text.cursor(0, 0)
+                    score_text.move(1, 1)
+                    score_text.text("Score: {0}".format(score))
 
         # collide between laser and alien
         for laser_number in range(len(lasers)):
@@ -309,6 +322,10 @@ def game_scene():
                         show_alien()
                         show_alien()
                         score = score + 1
+                        score_text.clear()
+                        score_text.cursor(0, 0)
+                        score_text.move(1, 1)
+                        score_text.text("Score: {0}".format(score))
 
         # redraw Sprite
         game.render_sprites(lasers + [ship] + aliens)
