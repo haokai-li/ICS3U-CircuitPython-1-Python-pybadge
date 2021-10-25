@@ -360,6 +360,11 @@ def game_over_scene(final_score):
     # add background
     image_bank_2 = stage.Bank.from_bmp16("mt_game_studio.bmp")
 
+    # size
+    background = stage.Grid(
+        image_bank_2, constants.SCREEN_GRID_X, constants.SCREEN_GRID_Y
+    )
+
     # add text
     text = []
     text1 = stage.Text(
@@ -382,9 +387,6 @@ def game_over_scene(final_score):
     text3.move(32, 110)
     text3.text("PRESS SELECT")
     text.append(text3)
-
-    # size
-    background = stage.Grid(image_bank_2, constants.SCREEN_X, constants.SCREEN_Y)
 
     # put background in game
     # set the frame rate
